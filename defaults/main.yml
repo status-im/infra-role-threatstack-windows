@@ -1,6 +1,6 @@
 ---
 # MSI package installation setup
-threatstack_msi_url: 'https://pkg.threatstack.com/v2/Windows/Threat+Stack+Cloud+Security+Agent.latest.msi'
+threatstack_msi_url: 'https://pkg.threatstack.com/v2/Windows/Threat+Stack+Cloud+Security+Agent.2.1.0.msi'
 threatstack_msi_sha256: 'df635130827c1426ac6997cb4a4ca632e03ad8f4f281685c09f5b1262d1a4eef'
 threatstack_msi_path: 'C:\Users\admin\Downloads\threatstack.msi'
 threatstack_msi_log: 'C:\Users\admin\threatstack.log'
