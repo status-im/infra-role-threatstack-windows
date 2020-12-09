@@ -1,0 +1,23 @@
+---
+- name: Download MSI installer
+  win_get_url:
+    dest: '{{ threatstack_msi_path }}'
+    url: '{{ threatstack_msi_url }}'
+    checksum: '{{ threatstack_msi_sha256 }}'
+    checksum_algorithm: 'sha256'
+
+- name: Execute MSI installer
+  win_package:
+    path: '{{ threatstack_msi_path }}'
+    log_path: '{{ threatstack_msi_log }}'
+    provider: 'msi'
+    arguments: >-
+      TSDEPLOYKEY="{{ threatstack_deploy_key }}"
+      TSRULESETNAMES="{{ threatstack_rule_sets | join(",") }}"
+      TSEVENTLOGLIST="{{ threatstack_ntlog_list | join(",") }}"
+
+- name: Verify Service running
+  win_service:
+    name: '{{ threatstack_service_name }}'
+    state: 'started'
+    start_mode: 'auto'
